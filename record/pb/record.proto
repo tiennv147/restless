@@ -22,10 +22,10 @@ message ListRecordsRequest {
 
 message Records {
     string offset = 1;
-    repeated Record records = 2;
+    repeated RecordModel records = 2;
 }
 
-message Record {
+message RecordModel {
     string id = 1;
     google.protobuf.Struct fields = 2;
 }

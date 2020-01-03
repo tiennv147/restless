@@ -62,7 +62,7 @@
         }
       }
     },
-    "pbRecord": {
+    "pbRecordModel": {
       "type": "object",
       "properties": {
         "id": {
@@ -82,7 +82,7 @@
         "records": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/pbRecord"
+            "$ref": "#/definitions/pbRecordModel"
           }
         }
       }

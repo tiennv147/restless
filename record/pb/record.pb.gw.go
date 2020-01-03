@@ -31,9 +31,9 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 var _ = descriptor.ForMessage
 
-func request_Record_Create_0(ctx context.Context, marshaler runtime.Marshaler, client RecordClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerRecorddata, error) {
+func request_Record_Create_0(ctx context.Context, marshaler runtime.Marshaler, client RecordClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ListRecordsRequest
-	var metadata runtime.ServerRecorddata
+	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
 	if berr != nil {
@@ -77,9 +77,9 @@ func request_Record_Create_0(ctx context.Context, marshaler runtime.Marshaler, c
 
 }
 
-func local_request_Record_Create_0(ctx context.Context, marshaler runtime.Marshaler, server RecordServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerRecorddata, error) {
+func local_request_Record_Create_0(ctx context.Context, marshaler runtime.Marshaler, server RecordServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ListRecordsRequest
-	var metadata runtime.ServerRecorddata
+	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
 	if berr != nil {
@@ -138,7 +138,7 @@ func RegisterRecordHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 			return
 		}
 		resp, md, err := local_request_Record_Create_0(rctx, inboundMarshaler, server, req, pathParams)
-		ctx = runtime.NewServerRecorddataContext(ctx, md)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -199,7 +199,7 @@ func RegisterRecordHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 			return
 		}
 		resp, md, err := request_Record_Create_0(rctx, inboundMarshaler, client, req, pathParams)
-		ctx = runtime.NewServerRecorddataContext(ctx, md)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
