@@ -1,17 +1,17 @@
 package cmd
 
 import (
-	"github.com/tiennv147/restless/meta/pb"
 	"log"
 	"net"
 	"net/http"
 	"path"
 	"strings"
 
-	"google.golang.org/grpc"
-
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"golang.org/x/net/context"
+	"google.golang.org/grpc"
+
+	"github.com/tiennv147/restless/record/pb"
 )
 
 func RunHTTP(listener net.Listener, opts ...runtime.ServeMuxOption) error {
@@ -35,7 +35,7 @@ func RunHTTP(listener net.Listener, opts ...runtime.ServeMuxOption) error {
 func newGateway(ctx context.Context, opts ...runtime.ServeMuxOption) (http.Handler, error) {
 	mux := runtime.NewServeMux(opts...)
 	dialOpts := []grpc.DialOption{grpc.WithInsecure()}
-	err := pb.RegisterMetaHandlerFromEndpoint(ctx, mux, "0.0.0.0"+Config.GRPC.ListenAddr, dialOpts)
+	err := pb.RegisterRecordHandlerFromEndpoint(ctx, mux, "0.0.0.0"+Config.GRPC.ListenAddr, dialOpts)
 	if err != nil {
 		return nil, err
 	}

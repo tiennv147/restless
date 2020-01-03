@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "pb/meta/meta.proto",
+    "title": "meta/pb/meta.proto",
     "version": "version not set"
   },
   "consumes": [
@@ -18,7 +18,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/metaListMetaReply"
+              "$ref": "#/definitions/pbListMetaReply"
             }
           }
         },
@@ -48,7 +48,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/metaCreateMetaReply"
+              "$ref": "#/definitions/pbCreateMetaReply"
             }
           }
         },
@@ -58,7 +58,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/metaCreateMetaRequest"
+              "$ref": "#/definitions/pbCreateMetaRequest"
             }
           }
         ],
@@ -74,7 +74,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/metaGetMetaReply"
+              "$ref": "#/definitions/pbGetMetaReply"
             }
           }
         },
@@ -96,7 +96,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/metaDeleteMetaReply"
+              "$ref": "#/definitions/sharedEmptyMsg"
             }
           }
         },
@@ -118,7 +118,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/metaUpdateMetaReply"
+              "$ref": "#/definitions/pbUpdateMetaReply"
             }
           }
         },
@@ -134,7 +134,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/metaUpdateMetaRequest"
+              "$ref": "#/definitions/pbUpdateMetaRequest"
             }
           }
         ],
@@ -145,7 +145,7 @@
     }
   },
   "definitions": {
-    "metaCreateMetaReply": {
+    "pbCreateMetaReply": {
       "type": "object",
       "properties": {
         "id": {
@@ -156,7 +156,7 @@
         }
       }
     },
-    "metaCreateMetaRequest": {
+    "pbCreateMetaRequest": {
       "type": "object",
       "properties": {
         "name": {
@@ -164,10 +164,7 @@
         }
       }
     },
-    "metaDeleteMetaReply": {
-      "type": "object"
-    },
-    "metaGetMetaReply": {
+    "pbGetMetaReply": {
       "type": "object",
       "properties": {
         "id": {
@@ -178,21 +175,57 @@
         }
       }
     },
-    "metaListMetaReply": {
+    "pbListMetaReply": {
       "type": "object",
       "properties": {
         "metas": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/metaMetaModel"
+            "$ref": "#/definitions/pbMetaModel"
           }
         },
         "metadata": {
-          "$ref": "#/definitions/metaListMetadata"
+          "$ref": "#/definitions/sharedListMetadata"
         }
       }
     },
-    "metaListMetadata": {
+    "pbMetaModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "pbUpdateMetaReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "pbUpdateMetaRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "sharedEmptyMsg": {
+      "type": "object"
+    },
+    "sharedListMetadata": {
       "type": "object",
       "properties": {
         "count": {
@@ -210,39 +243,6 @@
         "total": {
           "type": "string",
           "format": "int64"
-        }
-      }
-    },
-    "metaMetaModel": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      }
-    },
-    "metaUpdateMetaReply": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      }
-    },
-    "metaUpdateMetaRequest": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
         }
       }
     }

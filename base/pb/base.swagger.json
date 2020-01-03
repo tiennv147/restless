@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "pb/base/base.proto",
+    "title": "base/pb/base.proto",
     "version": "version not set"
   },
   "consumes": [
@@ -18,7 +18,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/baseListBaseReply"
+              "$ref": "#/definitions/pbListBaseReply"
             }
           }
         },
@@ -48,7 +48,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/baseCreateBaseReply"
+              "$ref": "#/definitions/pbCreateBaseReply"
             }
           }
         },
@@ -58,7 +58,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/baseCreateBaseRequest"
+              "$ref": "#/definitions/pbCreateBaseRequest"
             }
           }
         ],
@@ -74,7 +74,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/baseGetBaseReply"
+              "$ref": "#/definitions/pbGetBaseReply"
             }
           }
         },
@@ -96,7 +96,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/baseDeleteBaseReply"
+              "$ref": "#/definitions/sharedEmptyMsg"
             }
           }
         },
@@ -118,7 +118,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/baseUpdateBaseReply"
+              "$ref": "#/definitions/pbUpdateBaseReply"
             }
           }
         },
@@ -134,7 +134,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/baseUpdateBaseRequest"
+              "$ref": "#/definitions/pbUpdateBaseRequest"
             }
           }
         ],
@@ -145,7 +145,7 @@
     }
   },
   "definitions": {
-    "baseBaseModel": {
+    "pbBaseModel": {
       "type": "object",
       "properties": {
         "id": {
@@ -156,7 +156,7 @@
         }
       }
     },
-    "baseCreateBaseReply": {
+    "pbCreateBaseReply": {
       "type": "object",
       "properties": {
         "id": {
@@ -167,7 +167,7 @@
         }
       }
     },
-    "baseCreateBaseRequest": {
+    "pbCreateBaseRequest": {
       "type": "object",
       "properties": {
         "name": {
@@ -175,10 +175,7 @@
         }
       }
     },
-    "baseDeleteBaseReply": {
-      "type": "object"
-    },
-    "baseGetBaseReply": {
+    "pbGetBaseReply": {
       "type": "object",
       "properties": {
         "id": {
@@ -189,21 +186,46 @@
         }
       }
     },
-    "baseListBaseReply": {
+    "pbListBaseReply": {
       "type": "object",
       "properties": {
         "bases": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/baseBaseModel"
+            "$ref": "#/definitions/pbBaseModel"
           }
         },
         "metadata": {
-          "$ref": "#/definitions/baseListMetadata"
+          "$ref": "#/definitions/sharedListMetadata"
         }
       }
     },
-    "baseListMetadata": {
+    "pbUpdateBaseReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "pbUpdateBaseRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "sharedEmptyMsg": {
+      "type": "object"
+    },
+    "sharedListMetadata": {
       "type": "object",
       "properties": {
         "count": {
@@ -221,28 +243,6 @@
         "total": {
           "type": "string",
           "format": "int64"
-        }
-      }
-    },
-    "baseUpdateBaseReply": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      }
-    },
-    "baseUpdateBaseRequest": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
         }
       }
     }
